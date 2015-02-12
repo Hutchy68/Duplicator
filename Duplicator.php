@@ -61,8 +61,7 @@ $wgDuplicatorRevisionLimit = 250;
 function efDuplicatorNavigation( $skin, &$nav_urls, &$oldid, &$revid ) {
 	global $wgUser;
 	$ns = $skin->getTitle()->getNamespace();
-	if( ( $ns === NS_MAIN || $ns === NS_TALK ) && $wgUser->isAllowed( 'duplicate' ) ) {
-
+	if( ( $ns === NS_MAIN || $ns === NS_TALK || defined( 'NS_BLOG' ) && $ns === NS_BLOG ) && $wgUser->isAllowed( 'duplicate' ) ) {
 		$nav_urls['duplicator'] = array(
 			'text' => $skin->msg( 'duplicator-toolbox' ),
 			'href' => $skin->makeSpecialUrl( 'Duplicator', "source=" . wfUrlEncode( "{$skin->thispage}" ) )
