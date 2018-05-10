@@ -58,7 +58,7 @@ $wgDuplicatorRevisionLimit = 250;
  * Build the link to be shown in the toolbox if appropriate
  * @param $skin Skin
  */
-function efDuplicatorNavigation( &$skin, &$nav_urls, &$oldid, &$revid ) {
+function efDuplicatorNavigation( $skin, &$nav_urls, &$oldid, &$revid ) {
 	global $wgUser;
 	$ns = $skin->getTitle()->getNamespace();
 	if( ( $ns === NS_MAIN || $ns === NS_TALK ) && $wgUser->isAllowed( 'duplicate' ) ) {
@@ -74,7 +74,7 @@ function efDuplicatorNavigation( &$skin, &$nav_urls, &$oldid, &$revid ) {
 /**
  * Output the toolbox link if available
  */
-function efDuplicatorToolbox( &$monobook ) {
+function efDuplicatorToolbox( $monobook ) {
 	if ( isset( $monobook->data['nav_urls']['duplicator'] ) ) {
 
 		if ( $monobook->data['nav_urls']['duplicator']['href'] == '' ) {
